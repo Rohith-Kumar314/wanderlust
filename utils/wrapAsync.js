@@ -1,5 +1,5 @@
-module.exports = (fn)=>{
+module.exports = (fnx)=>{
     return (req,res,next)=>{
-        fn(req,res,next).catch((err)=>next(err));
+        fnx(req,res,next).catch((err)=>next(err));
     }
 }

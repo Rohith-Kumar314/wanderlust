@@ -20,4 +20,6 @@ const reviewSchema = Schema({
     }
 })
 
+// ==============reviews schema=====================
+
 module.exports = mongoose.model("Review",reviewSchema);

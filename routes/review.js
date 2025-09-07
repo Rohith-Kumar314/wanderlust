@@ -14,7 +14,6 @@ const {
 } = require("../middleware.js");
 
 
-
 //post review route
 router.post("/",isLoggedin,validateReview,wrapAsync(reviewController.createReview));
 

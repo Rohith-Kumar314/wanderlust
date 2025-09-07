@@ -348,5 +348,5 @@ const sampleListings = [
     country: "Costa Rica",
   },
 ];
-
+// sample data generated using LLM
 module.exports = { data: sampleListings };

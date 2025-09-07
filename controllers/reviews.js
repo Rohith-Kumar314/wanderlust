@@ -27,3 +27,6 @@ module.exports.destroyReview = async(req,res)=>{
     req.flash("success","review Deleted!");
     res.redirect(`/listings/${id}`);
 }
+
+
+// ==============Reviews related =====================

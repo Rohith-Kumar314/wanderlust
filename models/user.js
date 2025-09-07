@@ -11,3 +11,5 @@ const userSchema = new Schema({
 
 userSchema.plugin(passportLocalMongoose);
 module.exports = mongoose.model("User",userSchema); 
+
+// ==============User related Schema . passport adds username , and user id by default =====================
