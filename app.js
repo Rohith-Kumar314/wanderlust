@@ -22,11 +22,11 @@ const multer = require("multer");
 
 const app = express();
 
-// map code start
-app.use('/leaflet', express.static(path.join(__dirname, 'node_modules/leaflet/dist')));
+// // map code start
+// app.use('/leaflet', express.static(path.join(__dirname, 'node_modules/leaflet/dist')));
 
-const NodeGeocoder = require('node-geocoder');
-const geocoder = NodeGeocoder({ provider: 'openstreetmap' });
+// const NodeGeocoder = require('node-geocoder');
+// const geocoder = NodeGeocoder({ provider: 'openstreetmap' });
 
 //map code end
 
