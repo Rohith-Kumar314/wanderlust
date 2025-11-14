@@ -1,37 +1,37 @@
 const Listing = require("../models/listing");
 
 
-const NodeGeocoder = require("node-geocoder");
+// const NodeGeocoder = require("node-geocoder");
 
-const geocoder = NodeGeocoder({ provider: "openstreetmap" });
+// const geocoder = NodeGeocoder({ provider: "openstreetmap" });
 
-module.exports.showListing = async (req, res, next) => {
-  try {
-    const { id } = req.params;
-    const listing = await Listing.findById(id)
-      .populate({
-        path: "reviews",
-        populate: { path: "author" }
-      })
-      .populate("owner")
-      .lean();
+// module.exports.showListing = async (req, res, next) => {
+//   try {
+//     const { id } = req.params;
+//     const listing = await Listing.findById(id)
+//       .populate({
+//         path: "reviews",
+//         populate: { path: "author" }
+//       })
+//       .populate("owner")
+//       .lean();
 
-    if (!listing) {
-      req.flash("error", "Listing you requested does not exist");
-      return res.redirect("/listings");
-    }
+//     if (!listing) {
+//       req.flash("error", "Listing you requested does not exist");
+//       return res.redirect("/listings");
+//     }
 
-    // Geocode the address (from listing.location)
-    const geoRes = await geocoder.geocode(listing.location);
-    const { latitude = 0, longitude = 0 } = geoRes[0] || {};
+//     // Geocode the address (from listing.location)
+//     const geoRes = await geocoder.geocode(listing.location);
+//     const { latitude = 0, longitude = 0 } = geoRes[0] || {};
 
-    // Render EJS with map coordinates
-    res.render("listings/show.ejs", { listing, latitude, longitude });
+//     // Render EJS with map coordinates
+//     res.render("listings/show.ejs", { listing, latitude, longitude });
 
-  } catch (err) {
-    next(err);
-  }
-};
+//   } catch (err) {
+//     next(err);
+//   }
+// };
 
 
 
@@ -46,23 +46,23 @@ module.exports.renderNewForm = (req,res)=>{
     res.render("listings/new.ejs");
 };
 
-// module.exports.showListing = async (req,res)=>{
-//     let {id} = req.params;
-//     const listing = await Listing.findById(id)
-//     .populate({
-//         path:"reviews",
-//         populate:{
-//             path:"author",
-//         }
-//     }).populate("owner");
-//     if(!listing){
-//         req.flash("error","Listing You Requested for does not exists");
-//         res.redirect("/listings");
-//     }else{
-//         res.render("listings/show.ejs",{listing});
-//     }
+module.exports.showListing = async (req,res)=>{
+    let {id} = req.params;
+    const listing = await Listing.findById(id)
+    .populate({
+        path:"reviews",
+        populate:{
+            path:"author",
+        }
+    }).populate("owner");
+    if(!listing){
+        req.flash("error","Listing You Requested for does not exists");
+        res.redirect("/listings");
+    }else{
+        res.render("listings/show.ejs",{listing});
+    }
     
-// };
+};
 
 
 module.exports.createListing = async(req,res)=>{
