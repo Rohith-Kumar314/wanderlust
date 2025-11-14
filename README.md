@@ -4,7 +4,7 @@ A full-stack web application built with Node.js and Express that allows users to
 
 ## 🚀 Live Demo
 
-Check out the live application: [https://wanderlust-i665.onrender.com](https://wanderlust-i665.onrender.com)
+Check out the live application: [https://wanderlust-1-lkr9.onrender.com/listings](https://wanderlust-1-lkr9.onrender.com/listings)
 
 ## 📋 Table of Contents
 
